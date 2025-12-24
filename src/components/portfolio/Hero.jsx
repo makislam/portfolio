@@ -8,7 +8,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative px-6 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <section className="min-h-screen flex flex-col justify-center items-center relative px-6 bg-ivory-light dark:bg-slate-900">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -19,15 +19,15 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-sm uppercase tracking-[0.3em] text-slate-400 dark:text-slate-500 mb-6"
+          className="text-sm uppercase tracking-[0.3em] text-cloud-dark dark:text-cloud-light mb-6"
         >
           Mechanical Engineering @ University of Waterloo
         </motion.p>
         
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-slate-900 dark:text-ivory-light tracking-tight leading-[1.1]">
           Makis Lam
           <br />
-          <span className="font-medium bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+          <span className="font-medium text-accent">
             Robotics & Manufacturing
           </span>
         </h1>
@@ -36,10 +36,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-8 text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-light leading-relaxed"
+          className="mt-8 text-lg md:text-xl text-cloud-dark dark:text-cloud-light max-w-2xl mx-auto font-light leading-relaxed"
         >
-          {/* Building the future of robotics and manufacturing. Experience at Tesla Optimus, Formlabs, and Airbus—designing 
-          hardware systems, optimizing production processes, and solving complex engineering challenges. */}
+          Building the future of robotics and manufacturing. Experience at Tesla Optimus, Formlabs, and Airbus.
         </motion.p>
       </motion.div>
 
@@ -48,7 +47,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.6 }}
         onClick={scrollToProjects}
-        className="absolute bottom-12 flex flex-col items-center gap-2 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer group"
+        className="absolute bottom-12 flex flex-col items-center gap-2 text-cloud-dark dark:text-cloud-light hover:text-accent transition-colors cursor-pointer group"
       >
         <span className="text-xs uppercase tracking-[0.2em]">View Projects</span>
         <motion.div
@@ -60,8 +59,8 @@ export default function Hero() {
       </motion.button>
 
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-100 dark:bg-indigo-900/20 rounded-full blur-3xl opacity-30" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-violet-100 dark:bg-violet-900/20 rounded-full blur-3xl opacity-30" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-accent-light dark:bg-accent/10 rounded-full blur-3xl opacity-30" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-muted/30 dark:bg-accent-muted/10 rounded-full blur-3xl opacity-30" />
     </section>
   );
 }

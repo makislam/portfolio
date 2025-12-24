@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 
-// Updated category styles to match Project.json schema
+// Updated category styles with minimalist palette
 const categoryStyles = {
-  robotics: "bg-indigo-50 text-indigo-600 border-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 dark:border-indigo-800",
-  mechanical: "bg-amber-50 text-amber-600 border-amber-100 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800",
-  automation: "bg-emerald-50 text-emerald-600 border-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800",
-  software: "bg-violet-50 text-violet-600 border-violet-100 dark:bg-violet-900/30 dark:text-violet-400 dark:border-violet-800",
-  other: "bg-slate-50 text-slate-600 border-slate-100 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700"
+  robotics: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
+  mechanical: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
+  automation: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
+  software: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
+  other: "bg-ivory-dark text-cloud-dark border-cloud-light dark:bg-slate-700 dark:text-cloud-light dark:border-slate-600"
 };
 
 export default function ProjectCard({ project, index, onSelect }) {
@@ -22,7 +22,7 @@ export default function ProjectCard({ project, index, onSelect }) {
       onClick={() => onSelect(project)}
       className="group cursor-pointer"
     >
-      <div className="relative overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800 aspect-[4/3] mb-5">
+      <div className="relative overflow-hidden rounded-2xl bg-ivory-dark dark:bg-slate-700 aspect-[4/3] mb-5">
         {project.image_url ? (
           <img
             src={project.image_url}
@@ -30,8 +30,8 @@ export default function ProjectCard({ project, index, onSelect }) {
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700">
-            <span className="text-6xl font-light text-slate-300 dark:text-slate-600">
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-ivory-dark to-ivory dark:from-slate-700 dark:to-slate-800">
+            <span className="text-6xl font-light text-cloud-light dark:text-slate-600">
               {project.title?.charAt(0)}
             </span>
           </div>
@@ -70,7 +70,7 @@ export default function ProjectCard({ project, index, onSelect }) {
         {/* Featured badge */}
         {project.featured && (
           <div className="absolute top-4 left-4">
-            <Badge className="bg-indigo-600 text-white border-0 text-xs">
+            <Badge className="bg-accent text-white border-0 text-xs">
               Featured
             </Badge>
           </div>
@@ -79,13 +79,13 @@ export default function ProjectCard({ project, index, onSelect }) {
 
       <div className="space-y-3">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          <h3 className="text-xl font-medium text-slate-900 dark:text-ivory-light group-hover:text-accent transition-colors">
             {project.title}
           </h3>
-          <ArrowUpRight className="w-5 h-5 text-slate-300 dark:text-slate-600 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 flex-shrink-0 mt-1" />
+          <ArrowUpRight className="w-5 h-5 text-cloud-light dark:text-slate-600 group-hover:text-accent transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 flex-shrink-0 mt-1" />
         </div>
         
-        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed line-clamp-2">
+        <p className="text-cloud-dark dark:text-cloud-light text-sm leading-relaxed line-clamp-2">
           {project.description}
         </p>
 
@@ -94,7 +94,7 @@ export default function ProjectCard({ project, index, onSelect }) {
             {project.category}
           </Badge>
           {project.year && (
-            <span className="text-xs text-slate-400 dark:text-slate-500">{project.year}</span>
+            <span className="text-xs text-cloud dark:text-cloud">{project.year}</span>
           )}
         </div>
       </div>

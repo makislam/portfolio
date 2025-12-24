@@ -18,7 +18,7 @@ const skillCategories = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 md:py-32 px-6 bg-white dark:bg-slate-800">
+    <section id="about" className="py-24 md:py-32 px-6 bg-ivory-light dark:bg-slate-800">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div
@@ -27,14 +27,14 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-sm uppercase tracking-[0.3em] text-indigo-600 dark:text-indigo-400 mb-4">
+            <p className="text-sm uppercase tracking-[0.3em] text-accent mb-4">
               About
             </p>
-            <h2 className="text-4xl md:text-5xl font-light text-slate-900 dark:text-white mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-light text-slate-900 dark:text-ivory-light mb-6 leading-tight">
               Engineering with{' '}
               <span className="font-medium">precision</span> and purpose
             </h2>
-            <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed">
+            <div className="space-y-4 text-cloud-dark dark:text-cloud-light leading-relaxed">
               <p>
                 I'm a Mechanical Engineering student at the University of Waterloo with a passion for 
                 robotics, manufacturing, and bringing hardware to life. I've had the privilege of working 
@@ -45,7 +45,7 @@ export default function AboutSection() {
                 I thrive at the intersection of mechanical design, manufacturing, and software—where 
                 first-principles thinking meets hands-on problem solving.
               </p>
-              <p className="text-indigo-600 dark:text-indigo-400 font-medium">
+              <p className="text-accent font-medium">
                 Available May - Aug. 2026 • Incoming MDE @ Formlabs
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function AboutSection() {
           >
             {skillCategories.map((category, catIndex) => (
               <div key={category.title}>
-                <p className="text-sm uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-3">
+                <p className="text-sm uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-3">
                   {category.title}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -71,7 +71,7 @@ export default function AboutSection() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.3 + (catIndex * 0.1) + (index * 0.03) }}
-                      className="px-4 py-2 bg-slate-50 dark:bg-slate-700 rounded-full text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-100 dark:border-slate-600"
+                      className="px-4 py-2 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-sm font-medium border border-ivory-dark dark:border-slate-600"
                     >
                       {skill}
                     </motion.span>

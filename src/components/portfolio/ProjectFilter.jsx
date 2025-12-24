@@ -21,8 +21,8 @@ export default function ProjectFilter({ activeFilter, onFilterChange }) {
           className={cn(
             "relative px-5 py-2.5 text-sm font-medium rounded-full transition-colors",
             activeFilter === category.value
-              ? "text-white"
-              : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              ? "text-ivory-light"
+              : "text-cloud-dark dark:text-cloud-light hover:text-slate-900 dark:hover:text-ivory-light"
           )}
         >
           {activeFilter === category.value && (

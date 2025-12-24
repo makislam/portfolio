@@ -1,11 +1,11 @@
 import React from 'react';
 import Home from './pages/Home';
-import DarkModeToggle from './components/portfolio/DarkModeToggle';
+import Header from './components/portfolio/Header';
 
 export default function App() {
   return (
     <>
-      <DarkModeToggle />
+      <Header />
       <Home />
     </>
   );

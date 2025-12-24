@@ -27,11 +27,11 @@ export default function Home() {
   }, [projects, activeFilter]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className="min-h-screen bg-ivory-light dark:bg-slate-900">
       <Hero />
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 md:py-32 px-6">
+      <section id="projects" className="py-24 md:py-32 px-6 bg-ivory dark:bg-slate-800">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -40,10 +40,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <p className="text-sm uppercase tracking-[0.3em] text-indigo-600 dark:text-indigo-400 mb-4">
+            <p className="text-sm uppercase tracking-[0.3em] text-accent mb-4">
               Selected Work
             </p>
-            <h2 className="text-4xl md:text-5xl font-light text-slate-900 dark:text-white">
+            <h2 className="text-4xl md:text-5xl font-light text-slate-900 dark:text-ivory-light">
               Featured <span className="font-medium">Projects</span>
             </h2>
           </motion.div>
@@ -63,7 +63,7 @@ export default function Home() {
 
           {isLoading ? (
             <div className="flex justify-center items-center py-20">
-              <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+              <Loader2 className="w-8 h-8 animate-spin text-accent" />
             </div>
           ) : filteredProjects.length === 0 ? (
             <motion.div
@@ -71,10 +71,10 @@ export default function Home() {
               animate={{ opacity: 1 }}
               className="text-center py-20"
             >
-              <p className="text-slate-400 dark:text-slate-500 text-lg">
+              <p className="text-cloud-dark dark:text-cloud-light text-lg">
                 No projects found in this category yet.
               </p>
-              <p className="text-slate-300 dark:text-slate-600 text-sm mt-2">
+              <p className="text-cloud dark:text-cloud text-sm mt-2">
                 Add projects from the dashboard to showcase your work.
               </p>
             </motion.div>
@@ -98,9 +98,9 @@ export default function Home() {
       <ContactSection />
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-slate-900 dark:bg-black text-center border-t border-slate-800">
-        <p className="text-slate-500 text-sm">
-          © {new Date().getFullYear()} Portfolio. All rights reserved.
+      <footer className="py-8 px-6 bg-slate-900 dark:bg-slate-900 text-center border-t border-slate-700">
+        <p className="text-cloud text-sm">
+          © {new Date().getFullYear()} Makis Lam. All rights reserved.
         </p>
       </footer>
 

@@ -10,10 +10,10 @@ const socialLinks = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 bg-slate-900 dark:bg-black text-white relative overflow-hidden">
+    <section id="contact" className="py-24 md:py-32 px-6 bg-slate-900 dark:bg-slate-900 text-white relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-violet-600/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-muted/10 rounded-full blur-3xl" />
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
@@ -22,13 +22,13 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-indigo-400 mb-4">
+          <p className="text-sm uppercase tracking-[0.3em] text-accent mb-4">
             Get In Touch
           </p>
           <h2 className="text-4xl md:text-6xl font-light mb-6 leading-tight">
-            Let's <span className="font-medium text-indigo-400">connect</span>
+            Let's <span className="font-medium text-accent">connect</span>
           </h2>
-          <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-cloud-light text-lg mb-10 max-w-2xl mx-auto">
             Looking for a motivated engineer to join your team? Interested in collaborating on robotics, 
             manufacturing, or mechanical engineering projects? I'd love to hear from you.
           </p>
@@ -42,7 +42,7 @@ export default function ContactSection() {
             <Button
               asChild
               size="lg"
-              className="bg-white dark:bg-slate-100 text-slate-900 hover:bg-slate-100 dark:hover:bg-white rounded-full px-8 py-6 text-base font-medium group"
+              className="bg-ivory-light text-slate-900 hover:bg-ivory rounded-full px-8 py-6 text-base font-medium group"
             >
               <a href="mailto:makis.lam@uwaterloo.ca">
                 <Mail className="w-5 h-5 mr-2" />
@@ -65,7 +65,7 @@ export default function ContactSection() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-slate-400 hover:text-white"
+                className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-cloud-light hover:text-white"
                 aria-label={link.label}
               >
                 <link.icon className="w-5 h-5" />

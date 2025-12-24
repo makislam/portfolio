@@ -83,9 +83,9 @@ const experiences = [
 ];
 
 const typeColors = {
-  Research: 'bg-purple-50 text-purple-600 border-purple-100 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-800',
-  Internship: 'bg-red-50 text-red-600 border-red-100 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800',
-  'Co-op': 'bg-blue-50 text-blue-600 border-blue-100 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800',
+  Research: 'bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30',
+  Internship: 'bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30',
+  'Co-op': 'bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30',
 };
 
 function ExperienceCard({ experience, index }) {
@@ -97,23 +97,23 @@ function ExperienceCard({ experience, index }) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       className="group relative"
     >
-      <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg hover:border-slate-200 dark:hover:border-slate-600 transition-all duration-300">
+      <div className="relative bg-ivory-light dark:bg-slate-800 rounded-2xl p-6 md:p-8 shadow-sm border border-ivory-dark dark:border-slate-700 hover:shadow-lg hover:border-cloud-light dark:hover:border-slate-600 transition-all duration-300">
         {/* Header */}
         <div className="flex items-start gap-4 mb-4">
           <div className="text-4xl">{experience.logo}</div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+              <h3 className="text-xl font-semibold text-slate-900 dark:text-ivory-light">
                 {experience.company}
               </h3>
               <Badge variant="outline" className={`${typeColors[experience.type]} text-xs`}>
                 {experience.type}
               </Badge>
             </div>
-            <p className="text-indigo-600 dark:text-indigo-400 font-medium">
+            <p className="text-accent dark:text-accent-muted font-medium">
               {experience.role}
             </p>
-            <div className="flex items-center gap-4 mt-2 text-sm text-slate-500 dark:text-slate-400">
+            <div className="flex items-center gap-4 mt-2 text-sm text-cloud-dark dark:text-cloud-light">
               <span className="flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5" />
                 {experience.location}
@@ -129,8 +129,8 @@ function ExperienceCard({ experience, index }) {
         {/* Highlights */}
         <ul className="space-y-2 mb-4">
           {experience.highlights.map((highlight, idx) => (
-            <li key={idx} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-              <span className="text-indigo-500 mt-1.5">•</span>
+            <li key={idx} className="flex items-start gap-2 text-sm text-cloud-dark dark:text-cloud-light">
+              <span className="text-accent mt-1.5">•</span>
               <span>{highlight}</span>
             </li>
           ))}
@@ -142,7 +142,7 @@ function ExperienceCard({ experience, index }) {
             <Badge
               key={skill}
               variant="secondary"
-              className="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs"
+              className="bg-ivory dark:bg-slate-700 text-cloud-dark dark:text-cloud-light text-xs"
             >
               {skill}
             </Badge>
@@ -155,7 +155,7 @@ function ExperienceCard({ experience, index }) {
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 md:py-32 px-6 bg-slate-50 dark:bg-slate-900/50">
+    <section id="experience" className="py-24 md:py-32 px-6 bg-ivory dark:bg-slate-900/50">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -164,10 +164,10 @@ export default function ExperienceSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-indigo-600 dark:text-indigo-400 mb-4">
+          <p className="text-sm uppercase tracking-[0.3em] text-accent dark:text-accent-muted mb-4">
             Experience
           </p>
-          <h2 className="text-4xl md:text-5xl font-light text-slate-900 dark:text-white">
+          <h2 className="text-4xl md:text-5xl font-light text-slate-900 dark:text-ivory-light">
             Where I've <span className="font-medium">Worked</span>
           </h2>
         </motion.div>
@@ -186,15 +186,15 @@ export default function ExperienceSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16"
         >
-          <div className="bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl p-6 md:p-8 text-white">
+          <div className="bg-gradient-to-r from-accent to-accent-muted rounded-2xl p-6 md:p-8 text-white">
             <div className="flex items-start gap-4">
               <div className="text-4xl">🎓</div>
               <div>
                 <h3 className="text-xl font-semibold mb-1">University of Waterloo</h3>
-                <p className="text-indigo-100 font-medium">
+                <p className="text-ivory/90 font-medium">
                   Bachelor of Applied Science, Honours Mechanical Engineering, Co-op
                 </p>
-                <div className="flex items-center gap-4 mt-2 text-sm text-indigo-200">
+                <div className="flex items-center gap-4 mt-2 text-sm text-ivory-dark">
                   <span className="flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5" />
                     Waterloo, ON
