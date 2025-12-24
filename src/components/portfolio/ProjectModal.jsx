@@ -42,13 +42,13 @@ export default function ProjectModal({ project, onClose }) {
           className="bg-ivory-light dark:bg-slate-800 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl"
         >
           {/* Header Image Gallery */}
-          <div className="relative h-64 md:h-80 bg-ivory-dark dark:bg-slate-700">
+          <div className="relative h-64 md:h-80 bg-white dark:bg-slate-900">
             {images.length > 0 ? (
               <>
                 <img
                   src={images[currentImageIndex]}
                   alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'flex';

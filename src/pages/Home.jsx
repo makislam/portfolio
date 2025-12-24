@@ -30,6 +30,8 @@ export default function Home() {
     <div className="min-h-screen bg-ivory-light dark:bg-slate-900">
       <Hero />
 
+      <ExperienceSection />
+
       {/* Projects Section */}
       <section id="projects" className="py-24 md:py-32 px-6 bg-ivory dark:bg-slate-800">
         <div className="max-w-7xl mx-auto">
@@ -93,16 +95,13 @@ export default function Home() {
         </div>
       </section>
 
-      <ExperienceSection />
-      <AboutSection />
-      <ContactSection />
 
-      {/* Footer */}
+      {/* Footer
       <footer className="py-8 px-6 bg-slate-900 dark:bg-slate-900 text-center border-t border-slate-700">
         <p className="text-cloud text-sm">
           © {new Date().getFullYear()} Makis Lam. All rights reserved.
         </p>
-      </footer>
+      </footer> */}
 
       <ProjectModal
         project={selectedProject}

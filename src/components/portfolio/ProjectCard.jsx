@@ -22,12 +22,12 @@ export default function ProjectCard({ project, index, onSelect }) {
       onClick={() => onSelect(project)}
       className="group cursor-pointer"
     >
-      <div className="relative overflow-hidden rounded-2xl bg-ivory-dark dark:bg-slate-700 aspect-[4/3] mb-5">
+      <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 aspect-[4/3] mb-5">
         {project.image_url ? (
           <img
             src={project.image_url}
             alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-ivory-dark to-ivory dark:from-slate-700 dark:to-slate-800">
