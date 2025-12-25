@@ -9,8 +9,6 @@ import ProjectCard from '@/components/portfolio/ProjectCard';
 import ProjectFilter from '@/components/portfolio/ProjectFilter';
 import ProjectModal from '@/components/portfolio/ProjectModal';
 import ExperienceSection from '@/components/portfolio/ExperienceSection';
-import AboutSection from '@/components/portfolio/AboutSection';
-import ContactSection from '@/components/portfolio/ContactSection';
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('all');

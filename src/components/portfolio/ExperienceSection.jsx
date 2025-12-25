@@ -59,7 +59,7 @@ const experiences = [
     company: 'Composites Research Group',
     role: 'Undergraduate Research Assistant',
     location: 'Waterloo, ON',
-    period: 'May. - Aug. 2024',
+    period: 'May - Aug. 2024',
     type: 'Research',
     logo: '/logos/Waterloo.png',
     website: 'https://uwaterloo.ca/composites-research-group/',

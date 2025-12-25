@@ -16,6 +16,11 @@ export default function ProjectModal({ project, onClose }) {
       ? [project.image_url] 
       : [];
 
+  // Helper function to check if file is a video
+  const isVideo = (filename) => {
+    return /\.(mp4|webm|ogg|mov)$/i.test(filename);
+  };
+
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
@@ -45,20 +50,35 @@ export default function ProjectModal({ project, onClose }) {
           <div className="relative h-64 md:h-80 bg-white dark:bg-slate-900">
             {images.length > 0 ? (
               <>
-                <img
-                  src={images[currentImageIndex]}
-                  alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'flex';
-                  }}
-                />
-                <div className="w-full h-full hidden items-center justify-center bg-gradient-to-br from-ivory-dark to-ivory dark:from-slate-700 dark:to-slate-800">
-                  <span className="text-8xl font-light text-cloud-light dark:text-slate-600">
-                    {project.title?.charAt(0)}
-                  </span>
-                </div>
+                {isVideo(images[currentImageIndex]) ? (
+                  <video
+                    key={images[currentImageIndex]}
+                    src={images[currentImageIndex]}
+                    className="w-full h-full object-contain"
+                    controls
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={images[currentImageIndex]}
+                      alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                      className="w-full h-full object-contain"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="w-full h-full hidden items-center justify-center bg-gradient-to-br from-ivory-dark to-ivory dark:from-slate-700 dark:to-slate-800">
+                      <span className="text-8xl font-light text-cloud-light dark:text-slate-600">
+                        {project.title?.charAt(0)}
+                      </span>
+                    </div>
+                  </>
+                )}
                 
                 {/* Navigation arrows - only show if multiple images */}
                 {images.length > 1 && (
@@ -116,14 +136,9 @@ export default function ProjectModal({ project, onClose }) {
                 <h2 className="text-3xl md:text-4xl font-medium text-slate-900 dark:text-ivory-light mb-2">
                   {project.title}
                 </h2>
-                <div className="flex items-center gap-3">
-                  <Badge variant="outline" className="text-sm capitalize dark:border-slate-600 dark:text-cloud-light">
-                    {project.category}
-                  </Badge>
-                  {project.year && (
-                    <span className="text-sm text-cloud dark:text-cloud">{project.year}</span>
-                  )}
-                </div>
+                <Badge variant="outline" className="text-sm capitalize dark:border-slate-600 dark:text-cloud-light">
+                  {project.category}
+                </Badge>
               </div>
             </div>
 
@@ -157,7 +172,7 @@ export default function ProjectModal({ project, onClose }) {
                 <Button asChild className="bg-accent hover:bg-accent/90">
                   <a href={project.live_url} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    View Live
+                    View More
                   </a>
                 </Button>
               )}

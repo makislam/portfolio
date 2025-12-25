@@ -6,7 +6,6 @@ const categories = [
   { value: 'all', label: 'All Projects' },
   { value: 'robotics', label: 'Robotics' },
   { value: 'mechanical', label: 'Mechanical Design' },
-  { value: 'automation', label: 'Automation' },
   { value: 'software', label: 'Software' },
   { value: 'other', label: 'Other' }
 ];

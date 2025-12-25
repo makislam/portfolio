@@ -93,9 +93,6 @@ export default function ProjectCard({ project, index, onSelect }) {
           <Badge variant="outline" className={`${categoryStyles[project.category] || categoryStyles.other} text-xs font-normal capitalize`}>
             {project.category}
           </Badge>
-          {project.year && (
-            <span className="text-xs text-cloud dark:text-cloud">{project.year}</span>
-          )}
         </div>
       </div>
     </motion.article>
