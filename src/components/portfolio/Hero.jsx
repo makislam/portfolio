@@ -213,7 +213,7 @@ export default function Hero() {
                 <div className="flex items-center gap-3 md:gap-6">
                   <div className="w-12 h-12 md:w-24 md:h-24 rounded-full overflow-hidden border-2 md:border-4 border-white/30 flex-shrink-0">
                     <img
-                      src="/public/hero/me-4.jpg"
+                      src="/hero/me-4.jpg"
                       alt="Makis Lam"
                       className="w-full h-full object-cover"
                     />
