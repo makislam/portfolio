@@ -93,14 +93,6 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* Footer
-      <footer className="py-8 px-6 bg-slate-900 dark:bg-slate-900 text-center border-t border-slate-700">
-        <p className="text-cloud text-sm">
-          © {new Date().getFullYear()} Makis Lam. All rights reserved.
-        </p>
-      </footer> */}
-
       <ProjectModal
         project={selectedProject}
         onClose={() => setSelectedProject(null)}

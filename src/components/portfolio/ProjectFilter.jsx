@@ -7,7 +7,7 @@ const categories = [
   { value: 'robotics', label: 'Robotics' },
   { value: 'mechanical', label: 'Mechanical Design' },
   { value: 'software', label: 'Software' },
-  { value: 'other', label: 'Other' }
+  { value: 'research', label: 'Research' }
 ];
 
 export default function ProjectFilter({ activeFilter, onFilterChange }) {

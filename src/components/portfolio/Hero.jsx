@@ -1,6 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown, X } from 'lucide-react';
+
+const titles = ['Mechanical Engineer', 'Roboticist', 'Tinkerer', 'Pilot'];
+
+function useTypewriter(words, typingSpeed = 100, deletingSpeed = 50, pauseDuration = 2000) {
+  const [displayText, setDisplayText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayText.length < currentWord.length) {
+          setDisplayText(currentWord.slice(0, displayText.length + 1));
+        } else {
+          // Pause before deleting
+          setTimeout(() => setIsDeleting(true), pauseDuration);
+        }
+      } else {
+        // Deleting
+        if (displayText.length > 0) {
+          setDisplayText(currentWord.slice(0, displayText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayText, wordIndex, isDeleting, words, typingSpeed, deletingSpeed, pauseDuration]);
+
+  return displayText;
+}
 
 const skillCategories = [
   {
@@ -26,6 +62,7 @@ const heroImages = [
 export default function Hero() {
   const [showAbout, setShowAbout] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const typedTitle = useTypewriter(titles, 100, 50, 2000);
 
   const scrollToExperience = () => {
     document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
@@ -43,7 +80,12 @@ export default function Hero() {
           Makis Lam
           <br />
           <span className="font-medium text-accent">
-            Mechanical Engineer
+            {typedTitle}
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ repeat: Infinity, duration: 0.7, ease: "steps(1)" }}
+              className="inline-block w-[3px] h-[0.9em] bg-accent ml-1 align-middle"
+            />
           </span>
         </h1>
         {/* Stacked Images */}
@@ -150,7 +192,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowAbout(false)}
-            className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 md:p-6"
+            className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 md:p-6"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -158,18 +200,18 @@ export default function Hero() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-ivory-light dark:bg-slate-800 rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-hidden shadow-2xl"
+              className="bg-ivory-light dark:bg-slate-800 rounded-2xl md:rounded-3xl w-full max-w-3xl max-h-[80vh] md:max-h-[90vh] overflow-hidden shadow-2xl flex flex-col"
             >
               {/* Header with profile picture */}
-              <div className="relative bg-gradient-to-r from-accent to-accent-muted p-8 text-white">
+              <div className="relative bg-gradient-to-r from-accent to-accent-muted p-3 md:p-8 text-white flex-shrink-0">
                 <button
                   onClick={() => setShowAbout(false)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                  className="absolute top-2 right-2 md:top-4 md:right-4 p-1.5 md:p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 md:w-5 md:h-5" />
                 </button>
-                <div className="flex items-center gap-6">
-                  <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white/30 flex-shrink-0">
+                <div className="flex items-center gap-3 md:gap-6">
+                  <div className="w-12 h-12 md:w-24 md:h-24 rounded-full overflow-hidden border-2 md:border-4 border-white/30 flex-shrink-0">
                     <img
                       src="public/hero/me-4.jpg"
                       alt="Makis Lam"
@@ -177,18 +219,18 @@ export default function Hero() {
                     />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-medium mb-1">Makis Lam</h2>
-                    <p className="text-ivory/90">Mechanical Engineering @ University of Waterloo</p>
+                    <h2 className="text-lg md:text-3xl font-medium mb-0.5 md:mb-1">Makis Lam</h2>
+                    <p className="text-ivory/90 text-xs md:text-base">Mechanical Engineering @ UWaterloo</p>
                   </div>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 md:p-8 overflow-y-auto max-h-[calc(90vh-12rem)]">
-                <div className="space-y-6">
+              <div className="p-3 md:p-8 overflow-y-auto flex-1 min-h-0">
+                <div className="space-y-4 md:space-y-6">
                   <div>
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-accent mb-3">About</h3>
-                    <div className="space-y-4 text-cloud-dark dark:text-cloud-light leading-relaxed">
+                    <h3 className="text-xs md:text-sm uppercase tracking-[0.2em] text-accent mb-2 md:mb-3">About</h3>
+                    <div className="text-cloud-dark dark:text-cloud-light leading-relaxed text-sm md:text-base">
                       <p>
                         I'm a Mechanical Engineering student at the University of Waterloo. I like to work on cool things.
                         I also am a devout Christian, pilot, former Air Cadet, Varsity Frisbee Athlete, and F1 enthusiast. Check out some of my work!
@@ -199,14 +241,14 @@ export default function Hero() {
                   {/* Skills */}
                   {skillCategories.map((category) => (
                     <div key={category.title}>
-                      <h3 className="text-sm uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-3">
+                      <h3 className="text-xs md:text-sm uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-2 md:mb-3">
                         {category.title}
                       </h3>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 md:gap-2">
                         {category.skills.map((skill) => (
                           <span
                             key={skill}
-                            className="px-4 py-2 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-sm font-medium border border-ivory-dark dark:border-slate-600"
+                            className="px-2.5 py-1 md:px-4 md:py-2 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-xs md:text-sm font-medium border border-ivory-dark dark:border-slate-600"
                           >
                             {skill}
                           </span>

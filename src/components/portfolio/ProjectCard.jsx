@@ -9,7 +9,7 @@ const categoryStyles = {
   mechanical: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
   automation: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
   software: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30",
-  other: "bg-ivory-dark text-cloud-dark border-cloud-light dark:bg-slate-700 dark:text-cloud-light dark:border-slate-600"
+  research: "bg-accent-light text-accent border-accent-muted dark:bg-accent/20 dark:text-accent-muted dark:border-accent/30"
 };
 
 export default function ProjectCard({ project, index, onSelect }) {
