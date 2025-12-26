@@ -99,7 +99,7 @@ export default function Hero() {
             onClick={() => setShowAbout(true)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative h-64 md:h-72 w-full max-w-4xl cursor-pointer"
+            className="relative h-64 md:h-72 w-full max-w-4xl cursor-pointer group"
           >
             <div className="relative w-full h-full flex items-center justify-center">
               {heroImages.map((image, index) => {
@@ -124,7 +124,8 @@ export default function Hero() {
                     <motion.div
                       className="w-52 md:w-64 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-white dark:bg-slate-800"
                       animate={{
-                        scale: isHovered ? 1 : 1 - index * 0.02,
+                        scale: isHovered ? 1.02 : 1 - index * 0.02,
+                        filter: isHovered ? 'brightness(1.05)' : 'brightness(1)',
                       }}
                       transition={{
                         type: "spring",
@@ -160,6 +161,16 @@ export default function Hero() {
                 );
               })}
             </div>
+            {/* Subtle hint */}
+            <motion.span
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-cloud dark:text-cloud-light tracking-wide"
+              animate={{
+                opacity: isHovered ? 1 : 0.5,
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {isHovered ? 'Click to view about' : ''}
+            </motion.span>
           </button>
         </motion.div>
       </motion.div>
