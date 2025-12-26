@@ -239,12 +239,8 @@ export default function ProjectModal({ project, onClose }) {
                   controls
                   playsInline
                   onLoadedData={(e) => {
-                    e.target.play().catch(err => console.error('Play error:', err));
+                    e.target.play().catch(() => {});
                   }}
-                  onError={(e) => console.error('Video error:', e)}
-                  onStalled={(e) => console.log('Video stalled')}
-                  onWaiting={(e) => console.log('Video waiting')}
-                  onSuspend={(e) => console.log('Video suspended')}
                 >
                   <source src={project.video_url} type="video/mp4" />
                   Your browser does not support the video tag.
