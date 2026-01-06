@@ -244,7 +244,7 @@ export default function Hero() {
                     <div className="text-cloud-dark dark:text-cloud-light leading-relaxed text-sm md:text-base">
                       <p>
                         I'm a Mechanical Engineering student at the University of Waterloo. I like to work on cool things.
-                        I also am a devout Christian, pilot, former Air Cadet, Varsity Frisbee Athlete, and F1 enthusiast. Check out some of my work!
+                        I also am a devout Christian, pilot, former Air Cadet, Varsity Frisbee Athlete, photographer and F1 enthusiast. Check out some of my work!
                       </p>
                     </div>
                   </div>
