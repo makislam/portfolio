@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Github, Linkedin, Mail } from 'lucide-react';
+import { Moon, Sun, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // X (Twitter) icon component
@@ -41,6 +41,16 @@ export default function Header() {
           aria-label="Email"
         >
           <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+        </a>
+
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 sm:p-3 rounded-full bg-ivory-light dark:bg-slate-800 shadow-lg border border-ivory-dark dark:border-slate-700 text-slate-800 dark:text-ivory-light hover:text-accent transition-colors"
+          aria-label="Resume"
+        >
+          <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
         </a>
 
         <a
