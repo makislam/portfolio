@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, X } from 'lucide-react';
+import { ArrowDown, X, ChevronDown } from 'lucide-react';
 
 const titles = ['Mechanical Engineer', 'Roboticist', 'Tinkerer', 'Pilot'];
 
@@ -62,7 +62,24 @@ const heroImages = [
 export default function Hero() {
   const [showAbout, setShowAbout] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [showSkills, setShowSkills] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const typedTitle = useTypewriter(titles, 100, 50, 2000);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Reset skills collapse state when modal closes
+  useEffect(() => {
+    if (!showAbout) {
+      setShowSkills(false);
+    }
+  }, [showAbout]);
 
   const scrollToExperience = () => {
     document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
@@ -97,35 +114,36 @@ export default function Hero() {
         >
           <button
             onClick={() => setShowAbout(true)}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => !isMobile && setIsHovered(true)}
+            onMouseLeave={() => !isMobile && setIsHovered(false)}
             className="relative h-64 md:h-72 w-full max-w-4xl cursor-pointer group"
           >
             <div className="relative w-full h-full flex items-center justify-center">
               {heroImages.map((image, index) => {
-                const spreadX = (index - 1) * 280; // Spread horizontally when hovered
+                const spreadX = (index - 1) * 280; // Spread horizontally when hovered (desktop only)
+                const shouldSpread = isHovered && !isMobile;
                 return (
                   <motion.div
                     key={index}
                     className="absolute flex flex-col items-center"
                     animate={{
-                      x: isHovered ? spreadX : image.stackX,
-                      y: isHovered ? 0 : image.stackY,
-                      rotate: isHovered ? 0 : image.rotation,
-                      zIndex: isHovered ? 1 : heroImages.length - index,
+                      x: shouldSpread ? spreadX : image.stackX,
+                      y: shouldSpread ? 0 : image.stackY,
+                      rotate: shouldSpread ? 0 : image.rotation,
+                      zIndex: shouldSpread ? 1 : heroImages.length - index,
                     }}
                     transition={{
                       type: "spring",
                       stiffness: 200,
                       damping: 20,
-                      delay: isHovered ? index * 0.05 : (heroImages.length - 1 - index) * 0.05,
+                      delay: shouldSpread ? index * 0.05 : (heroImages.length - 1 - index) * 0.05,
                     }}
                   >
                     <motion.div
                       className="w-52 md:w-64 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl bg-white dark:bg-slate-800"
                       animate={{
-                        scale: isHovered ? 1.02 : 1 - index * 0.02,
-                        filter: isHovered ? 'brightness(1.05)' : 'brightness(1)',
+                        scale: shouldSpread ? 1.02 : 1 - index * 0.02,
+                        filter: shouldSpread ? 'brightness(1.05)' : 'brightness(1)',
                       }}
                       transition={{
                         type: "spring",
@@ -133,7 +151,7 @@ export default function Hero() {
                         damping: 20,
                       }}
                       style={{
-                        boxShadow: isHovered 
+                        boxShadow: shouldSpread 
                           ? '0 10px 40px -10px rgba(0,0,0,0.2)' 
                           : '0 20px 50px -15px rgba(0,0,0,0.3)',
                       }}
@@ -147,12 +165,12 @@ export default function Hero() {
                     <motion.span
                       className="mt-3 text-sm text-cloud-dark dark:text-cloud-light font-medium"
                       animate={{
-                        opacity: isHovered ? 1 : 0,
-                        y: isHovered ? 0 : -10,
+                        opacity: shouldSpread ? 1 : 0,
+                        y: shouldSpread ? 0 : -10,
                       }}
                       transition={{
                         duration: 0.2,
-                        delay: isHovered ? 0.15 + index * 0.05 : 0,
+                        delay: shouldSpread ? 0.15 + index * 0.05 : 0,
                       }}
                     >
                       {image.label}
@@ -161,16 +179,29 @@ export default function Hero() {
                 );
               })}
             </div>
-            {/* Subtle hint */}
-            <motion.span
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-cloud dark:text-cloud-light tracking-wide"
-              animate={{
-                opacity: isHovered ? 1 : 0.5,
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              {isHovered ? 'Click to view about' : ''}
-            </motion.span>
+            {/* Subtle hint - desktop */}
+            {!isMobile && (
+              <motion.span
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-cloud dark:text-cloud-light tracking-wide"
+                animate={{
+                  opacity: isHovered ? 1 : 0.5,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {isHovered ? 'Click to view about' : ''}
+              </motion.span>
+            )}
+            {/* Subtle hint - mobile */}
+            {isMobile && (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.6 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-cloud dark:text-cloud-light tracking-wide"
+              >
+                Tap to learn more
+              </motion.span>
+            )}
           </button>
         </motion.div>
       </motion.div>
@@ -249,24 +280,73 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* Skills */}
-                  {skillCategories.map((category) => (
-                    <div key={category.title}>
-                      <h3 className="text-xs md:text-sm uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-2 md:mb-3">
-                        {category.title}
-                      </h3>
-                      <div className="flex flex-wrap gap-1.5 md:gap-2">
-                        {category.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="px-2.5 py-1 md:px-4 md:py-2 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-xs md:text-sm font-medium border border-ivory-dark dark:border-slate-600"
-                          >
-                            {skill}
-                          </span>
-                        ))}
+                  {/* Skills - Collapsible on mobile */}
+                  <div className="md:hidden">
+                    <button
+                      onClick={() => setShowSkills(!showSkills)}
+                      className="flex items-center justify-between w-full py-2 text-xs uppercase tracking-[0.2em] text-accent"
+                    >
+                      <span>Skills & Stack</span>
+                      <motion.div
+                        animate={{ rotate: showSkills ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.div>
+                    </button>
+                    <AnimatePresence>
+                      {showSkills && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="space-y-4 pt-2">
+                            {skillCategories.map((category) => (
+                              <div key={category.title}>
+                                <h3 className="text-xs uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-2">
+                                  {category.title}
+                                </h3>
+                                <div className="flex flex-wrap gap-1.5">
+                                  {category.skills.map((skill) => (
+                                    <span
+                                      key={skill}
+                                      className="px-2.5 py-1 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-xs font-medium border border-ivory-dark dark:border-slate-600"
+                                    >
+                                      {skill}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Skills - Always visible on desktop */}
+                  <div className="hidden md:block space-y-6">
+                    {skillCategories.map((category) => (
+                      <div key={category.title}>
+                        <h3 className="text-sm uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-3">
+                          {category.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {category.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="px-4 py-2 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-sm font-medium border border-ivory-dark dark:border-slate-600"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

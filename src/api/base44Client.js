@@ -205,6 +205,27 @@ const sampleProjects = [
     year: '2025',
     created_date: '2025-10-01',
   },
+  {
+    id: '11',
+    title: 'Private Pilot\'s License',
+    description: 'Private Pilot with 55 hours.',
+    long_description: 'Completed my Private Pilot\'s License (PPL) in a 5 week program at Gander International Airport in Newfoundland. Graduated the program as the top cadet and recieved various awards and scholarships for my performance on course. This time spent studying flight gives me a better intuition of how things fly that goes beyond what is taught in the classroom.',
+    category: 'other',
+    image_url: '/projects/pilot-1.jpg',
+    images: [
+      '/projects/pilot-1.jpg',
+      '/projects/pilot-2.png',
+      '/projects/pilot-3.jpg',
+      '/projects/pilot-4.jpg',
+      '/projects/pilot-5.jpg',
+    ],
+    technologies: ['Fluid Dynamics', 'Meteorology', 'Air Law', 'Navigation', 'Flight Training'],
+    github_url: '',
+    live_url: '',
+    featured: false,
+    year: '2022',
+    created_date: '2022-08-20',
+  },
 ];
 
 export const base44 = {
