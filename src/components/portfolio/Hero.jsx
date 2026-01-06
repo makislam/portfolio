@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, X, ChevronDown } from 'lucide-react';
+import { ArrowDown, X, ChevronDown, Camera } from 'lucide-react';
+import PhotoGallery from './PhotoGallery';
 
 const titles = ['Mechanical Engineer', 'Roboticist', 'Tinkerer', 'Pilot'];
 
@@ -63,6 +64,7 @@ export default function Hero() {
   const [showAbout, setShowAbout] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const typedTitle = useTypewriter(titles, 100, 50, 2000);
 
@@ -278,6 +280,14 @@ export default function Hero() {
                         I also am a devout Christian, pilot, former Air Cadet, Varsity Frisbee Athlete, photographer and F1 enthusiast. Check out some of my work!
                       </p>
                     </div>
+                    {/* Photo Gallery Button */}
+                    <button
+                      onClick={() => setShowGallery(true)}
+                      className="mt-3 md:mt-4 flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-accent hover:bg-accent/90 text-white rounded-full text-xs md:text-sm font-medium transition-colors"
+                    >
+                      <Camera className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                      <span>View Photo Gallery</span>
+                    </button>
                   </div>
 
                   {/* Skills - Collapsible on mobile */}
@@ -353,6 +363,9 @@ export default function Hero() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Photo Gallery */}
+      <PhotoGallery isOpen={showGallery} onClose={() => setShowGallery(false)} />
     </section>
   );
 }
