@@ -140,6 +140,14 @@ const sampleProjects = [
     images: [
       '/projects/drone-1.png',
       '/projects/drone-2.png',
+      '/projects/drone-3.png',
+      '/projects/drone-4.png',
+      '/projects/drone-5.png',
+      '/projects/drone-6.png',
+      '/projects/drone-7.png',
+      '/projects/drone-8.png',
+      '/projects/drone-9.png',
+      '/projects/drone-10.png',
     ],
     technologies: ['SolidWorks', 'CFD', 'FDM 3D Printing', 'Ansys FEA', 'Aerodynamic Analysis'],
     github_url: '',
@@ -234,20 +242,20 @@ export const base44 = {
       list: async (sortBy = '-created_date') => {
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 500));
-        
+
         // Sort projects
         const sorted = [...sampleProjects].sort((a, b) => {
           const field = sortBy.startsWith('-') ? sortBy.slice(1) : sortBy;
           const direction = sortBy.startsWith('-') ? -1 : 1;
-          
+
           if (a[field] < b[field]) return -1 * direction;
           if (a[field] > b[field]) return 1 * direction;
           return 0;
         });
-        
+
         return sorted;
       },
-      
+
       get: async (id) => {
         await new Promise(resolve => setTimeout(resolve, 200));
         return sampleProjects.find(p => p.id === id);
