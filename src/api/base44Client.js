@@ -234,6 +234,26 @@ const sampleProjects = [
     year: '2022',
     created_date: '2022-08-20',
   },
+  {
+    id: '12',
+    title: 'Humanoid Locomotion Policy',
+    description: 'Developed a natural humanoid walking policy using DeepMimic-style reinforcement learning using Google Brax.',
+    long_description: 'Developed a natural humanoid walking policy using DeepMimic-style reinforcement learning within the Brax/JAX physics engine. Overcame kinematic discrepancies in CMU Motion Capture data by remapping inverted coordinate systems and engineering biomechanical constraints to eliminate gait artifacts like "cowboy stance" and leg crossing. Optimized agent stability by implementing a custom gyroscope-based upright reward and "death-by-tilt" termination logic, achieving a robust, naturally oscillating gait over 30 million PPO training steps. Validated the policy\’s performance through kinematic analysis of phase-based foot contacts and center-of-mass tracking.',
+    category: 'robotics',
+    image_url: '/projects/LocomotionRL-1.png',
+    images: [
+      '/projects/LocomotionRL-1.png',
+      '/projects/LocomotionRL-2.mp4',
+      '/projects/LocomotionRL-3.png',
+      '/projects/LocomotionRL-4.png',
+    ],
+    technologies: ['Reinforcement Learning', 'Brax', 'JAX', 'DeepMimic', 'Biomechanics'],
+    github_url: '',
+    live_url: '',
+    featured: true,
+    year: '2026',
+    created_date: '2026-01-09',
+  },
 ];
 
 export const base44 = {

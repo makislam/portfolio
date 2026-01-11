@@ -29,7 +29,7 @@ export default function ProjectModal({ project, onClose }) {
 
   // Helper function to check if file is a video
   const isVideo = (filename) => {
-    return /\.(mp4|webm|ogg|mov)$/i.test(filename);
+    return /\.(mp4|webm|ogg|mov|mkv)$/i.test(filename);
   };
 
   const nextImage = () => {
