@@ -24,11 +24,24 @@ export default function ProjectCard({ project, index, onSelect }) {
     >
       <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-slate-900 aspect-[4/3] mb-5">
         {project.image_url ? (
-          <img
-            src={project.image_url}
-            alt={project.title}
-            className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-          />
+          <picture>
+            <source
+              srcSet={(() => {
+                const url = project.image_url;
+                const file = url.substring(url.lastIndexOf('/') + 1);
+                const name = file.substring(0, file.lastIndexOf('.'));
+                return `/projects/thumbs/thumb-${name}.webp`;
+              })()}
+              type="image/webp"
+            />
+            <img
+              src={project.image_url}
+              alt={project.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+          </picture>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-ivory-dark to-ivory dark:from-slate-700 dark:to-slate-800">
             <span className="text-6xl font-light text-cloud-light dark:text-slate-600">
@@ -36,7 +49,7 @@ export default function ProjectCard({ project, index, onSelect }) {
             </span>
           </div>
         )}
-        
+
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -84,7 +97,7 @@ export default function ProjectCard({ project, index, onSelect }) {
           </h3>
           <ArrowUpRight className="w-5 h-5 text-cloud-light dark:text-slate-600 group-hover:text-accent transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 flex-shrink-0 mt-1" />
         </div>
-        
+
         <p className="text-cloud-dark dark:text-cloud-light text-sm leading-relaxed line-clamp-2">
           {project.description}
         </p>

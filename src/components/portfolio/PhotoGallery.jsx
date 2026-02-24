@@ -48,6 +48,15 @@ const galleryPhotos = [
   { src: '/gallery/received_2030490920804957.jpeg', alt: 'Photo' },
 ];
 
+// Derive the thumbnail WebP path from an original gallery image path
+function getThumbSrc(src) {
+  const dir = src.substring(0, src.lastIndexOf('/') + 1);
+  const file = src.substring(src.lastIndexOf('/') + 1);
+  const lastDot = file.lastIndexOf('.');
+  const name = lastDot !== -1 ? file.substring(0, lastDot) : file;
+  return `${dir}thumb-${name}.webp`;
+}
+
 export default function PhotoGallery({ isOpen, onClose }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [direction, setDirection] = useState(0);
@@ -131,12 +140,16 @@ export default function PhotoGallery({ isOpen, onClose }) {
                 onClick={() => setSelectedIndex(index)}
                 className="relative w-full group cursor-pointer block"
               >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  className="w-full h-auto object-cover rounded-sm"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet={getThumbSrc(photo.src)} type="image/webp" />
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-auto object-cover rounded-sm"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 {/* Hover overlay - VSCO style minimal */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 rounded-sm" />
               </button>

@@ -280,9 +280,6 @@ export const base44 = {
   entities: {
     Project: {
       list: async (sortBy = '-created_date') => {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 500));
-
         // Sort projects
         const sorted = [...sampleProjects].sort((a, b) => {
           const field = sortBy.startsWith('-') ? sortBy.slice(1) : sortBy;
@@ -297,7 +294,6 @@ export const base44 = {
       },
 
       get: async (id) => {
-        await new Promise(resolve => setTimeout(resolve, 200));
         return sampleProjects.find(p => p.id === id);
       },
     },

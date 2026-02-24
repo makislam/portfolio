@@ -12,7 +12,7 @@ function useTypewriter(words, typingSpeed = 100, deletingSpeed = 50, pauseDurati
 
   useEffect(() => {
     const currentWord = words[wordIndex];
-    
+
     const timeout = setTimeout(() => {
       if (!isDeleting) {
         // Typing
@@ -55,9 +55,9 @@ const skillCategories = [
 ];
 
 const heroImages = [
-  { src: '/hero/me-1.jpg', alt: 'Makis Lam', rotation: -15, stackX: -20, stackY: 0 },
-  { src: '/hero/me-3.png', alt: 'Makis Lam', rotation: 5, stackX: 10, stackY: 8 },
-  { src: '/hero/me-2.jpg', alt: 'Makis Lam', rotation: 18, stackX: 40, stackY: 4 },
+  { src: '/hero/me-1.jpg', webpSrc: '/hero/me-1.webp', alt: 'Makis Lam', rotation: -15, stackX: -20, stackY: 0 },
+  { src: '/hero/me-3.png', webpSrc: '/hero/me-3.webp', alt: 'Makis Lam', rotation: 5, stackX: 10, stackY: 8 },
+  { src: '/hero/me-2.jpg', webpSrc: '/hero/me-2.webp', alt: 'Makis Lam', rotation: 18, stackX: 40, stackY: 4 },
 ];
 
 export default function Hero() {
@@ -94,7 +94,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="text-center max-w-4xl"
-      >        
+      >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-slate-900 dark:text-ivory-light tracking-tight leading-[1.1]">
           Makis Lam
           <br />
@@ -153,16 +153,22 @@ export default function Hero() {
                         damping: 20,
                       }}
                       style={{
-                        boxShadow: shouldSpread 
-                          ? '0 10px 40px -10px rgba(0,0,0,0.2)' 
+                        boxShadow: shouldSpread
+                          ? '0 10px 40px -10px rgba(0,0,0,0.2)'
                           : '0 20px 50px -15px rgba(0,0,0,0.3)',
                       }}
                     >
-                      <img
-                        src={image.src}
-                        alt={image.alt}
-                        className="w-full h-full object-cover"
-                      />
+                      <picture>
+                        <source srcSet={image.webpSrc} type="image/webp" />
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          fetchpriority={index === 0 ? 'high' : 'auto'}
+                          decoding="async"
+                          className="w-full h-full object-cover"
+                        />
+                      </picture>
                     </motion.div>
                     <motion.span
                       className="mt-3 text-sm text-cloud-dark dark:text-cloud-light font-medium"
@@ -256,11 +262,16 @@ export default function Hero() {
                 </button>
                 <div className="flex items-center gap-3 md:gap-6">
                   <div className="w-12 h-12 md:w-24 md:h-24 rounded-full overflow-hidden border-2 md:border-4 border-white/30 flex-shrink-0">
-                    <img
-                      src="/hero/me-4.jpg"
-                      alt="Makis Lam"
-                      className="w-full h-full object-cover"
-                    />
+                    <picture>
+                      <source srcSet="/hero/me-4.webp" type="image/webp" />
+                      <img
+                        src="/hero/me-4.jpg"
+                        alt="Makis Lam"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover"
+                      />
+                    </picture>
                   </div>
                   <div>
                     <h2 className="text-lg md:text-3xl font-medium mb-0.5 md:mb-1">Makis Lam</h2>
