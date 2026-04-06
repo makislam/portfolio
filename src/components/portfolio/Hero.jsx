@@ -66,6 +66,7 @@ export default function Hero() {
   const [showSkills, setShowSkills] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [visitorCount, setVisitorCount] = useState(null);
   const typedTitle = useTypewriter(titles, 100, 50, 2000);
 
   // Check if mobile on mount and resize
@@ -74,6 +75,14 @@ export default function Hero() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Track visitor count on mount
+  useEffect(() => {
+    fetch('https://api.counterapi.dev/v1/mlam-portfolio/visits/up')
+      .then(res => res.json())
+      .then(data => setVisitorCount(data.count))
+      .catch(() => {});
   }, []);
 
   // Reset skills collapse state when modal closes
@@ -368,6 +377,15 @@ export default function Hero() {
                       </div>
                     ))}
                   </div>
+
+                  {/* Private visitor counter */}
+                  {visitorCount !== null && (
+                    <div className="pt-4 border-t border-ivory-dark dark:border-slate-700">
+                      <p className="text-[10px] text-cloud dark:text-cloud-light text-right opacity-50 select-none">
+                        {visitorCount.toLocaleString()} visits
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
