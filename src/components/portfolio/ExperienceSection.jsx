@@ -6,13 +6,13 @@ import { Badge } from '@/components/ui/badge';
 const experiences = [
   {
     id: 1,
-    company: 'Formlabs',
-    role: 'SLS Mechanical Design Engineer',
-    location: 'Somerville, MA',
-    period: 'Jan. 2026 - Present',
+    company: 'FuturHand Robotics',
+    role: 'Robotics Engineer',
+    location: 'Pittsburgh, PA',
+    period: 'May 2026 - Present',
     type: 'Internship',
-    logo: '/logos/Formlabs.png',
-    website: 'https://formlabs.com/',
+    logo: '/logos/futurhand.png',
+    website: 'https://futurhandrobotics.com/',
   },
   {
     id: 2,
@@ -26,6 +26,16 @@ const experiences = [
   },
   {
     id: 3,
+    company: 'Formlabs',
+    role: 'SLS Mechanical Design Engineer',
+    location: 'Somerville, MA',
+    period: 'Jan. - Apr. 2026',
+    type: 'Internship',
+    logo: '/logos/Formlabs.png',
+    website: 'https://formlabs.com/',
+  },
+  {
+    id: 4,
     company: 'Tesla',
     role: 'Robotics Hardware Engineer - Optimus',
     location: 'Palo Alto, CA',
@@ -35,7 +45,7 @@ const experiences = [
     website: 'https://www.tesla.com/en_ca/AI',
   },
   {
-    id: 4,
+    id: 5,
     company: 'printbnb',
     role: 'CEO & Co-Founder',
     location: 'Waterloo, ON',
@@ -45,7 +55,7 @@ const experiences = [
     website: 'https://printbnb.ca/',
   },
   {
-    id: 5,
+    id: 6,
     company: 'Formlabs',
     role: 'SLA Settings Optimization Engineer (R&D)',
     location: 'Somerville, MA',
@@ -55,7 +65,7 @@ const experiences = [
     website: 'https://formlabs.com/',
   },
   {
-    id: 6,
+    id: 7,
     company: 'Composites Research Group',
     role: 'Undergraduate Research Assistant',
     location: 'Waterloo, ON',
@@ -65,7 +75,7 @@ const experiences = [
     website: 'https://uwaterloo.ca/composites-research-group/',
   },
   {
-    id: 7,
+    id: 8,
     company: 'Airbus',
     role: 'Integration Engineer - A220 Cabin',
     location: 'Mirabel, QC',
@@ -75,7 +85,7 @@ const experiences = [
     website: 'https://www.airbus.com/en',
   },
   {
-    id: 8,
+    id: 9,
     company: 'Delta Elevator',
     role: 'Mechanical Design Engineer',
     location: 'Kitchener, ON',
