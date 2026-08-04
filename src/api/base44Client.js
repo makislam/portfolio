@@ -274,6 +274,29 @@ const sampleProjects = [
     year: '2026',
     created_date: '2026-01-30',
   },
+  {
+    id: '14',
+    title: 'BetterThanU Rubik\'s Cube Solver',
+    description: 'LEGO EV3 cube-solving robot paired with a C++ analysis tool that generates RobotC solve instructions.',
+    long_description: 'Built a LEGO EV3-based cube solver with a companion analysis program that translates scramble notation into solution moves for the robot. The workflow outputs a moves.txt file that can be loaded into RobotC, creating a simple pipeline from cube input to automated solve instructions.',
+    category: 'robotics',
+    image_url: '/projects/cube-1.png',
+    images: [
+      '/projects/cube-1.png',
+      '/projects/cube-2.png',
+      '/projects/cube-3.png',
+      '/projects/cube-4.png',
+      '/projects/cube-5.png',
+      '/projects/cube-6.png',
+    ],
+    video_url: '/projects/cube-video.mp4',
+    technologies: ['LEGO EV3', 'RobotC', 'C++'],
+    github_url: 'https://github.com/makislam/BetterThanU',
+    live_url: '',
+    featured: false,
+    year: '2023',
+    created_date: '2023-03-23',
+  },
 ];
 
 export const base44 = {
