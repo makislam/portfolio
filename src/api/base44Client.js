@@ -297,6 +297,26 @@ const sampleProjects = [
     year: '2023',
     created_date: '2023-03-23',
   },
+  {
+    id: '15',
+    title: 'BetterThanU2',
+    description: 'ROS2-based Rubik\’s Cube robot using RealSense vision, Dynamixel actuators, and Kociemba algorithmic solves.',
+    long_description: 'Designed, assembled, and benchmarked a ROS2-integrated Rubik\'s Cube solving robot using Dynamixel motors and RealSense D405 cameras. Streamlined end-to-end execution through a unified launch stack that processes cube states via the Kociemba solver and executes motion plans seamlessly. Built the foundational labeled dataset to transition state detection to a real-time ML model.',
+    category: 'robotics',
+    image_url: '/projects/betterthanuv2-1.jpg',
+    images: [
+      '/projects/betterthanuv2-1.jpg',
+      '/projects/betterthanuv2-2.png',
+      '/projects/betterthanuv2-3.png',
+    ],
+    video_url: '/projects/betterthanuv2vid.mp4',
+    technologies: ['ROS2', 'Dynamixel', 'Intel RealSense', 'Computer Vision', 'Robotics'],
+    github_url: 'https://github.com/makislam/BetterThanU2',
+    live_url: '',
+    featured: true,
+    year: '2026',
+    created_date: '2026-08-12',
+  },
 ];
 
 export const base44 = {
