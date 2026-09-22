@@ -321,7 +321,7 @@ const sampleProjects = [
     id: '16',
     title: 'PrintDnD',
     description: 'An autonomous 3D printer technician which resets the printer so you don\'t have toString.',
-    long_description: 'Fine tuned the PI0 Vision Language Action (VLA) Model with 100+ takes of teleoperated data and deployed onto the BracketBot to interact with a Bambu Lab X1 Carbon 3D printer. Teleoperation data was collected with the Meta Quest 3S and model trained on NVIDIA H100 GPU with inference running on the same GPU.',
+    long_description: 'Fine tuned the PI0 Vision Language Action (VLA) Model with 100+ takes of teleoperated data and deployed onto the BracketBot to interact with a Bambu Lab X1 Carbon 3D printer. Teleoperation data was collected with the Meta Quest 3S and model trained on NVIDIA H100 GPU with inference running on the same GPU. The project won 2nd place at Hack the North, Canada\'s largest hackathon.',
     category: 'robotics',
     image_url: '/projects/Printdnd.png',
     images: [
