@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Play, Maximize2 } from 'lucide-react';
+import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Play, Maximize2, Youtube } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -208,6 +208,24 @@ export default function ProjectModal({ project, onClose }) {
                   <a href={project.github_url} target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 mr-2" />
                     View Code
+                  </a>
+                </Button>
+              )}
+              {project.devpost_url && (
+                <Button asChild variant="outline">
+                  <a href={project.devpost_url} target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 512 512" className="w-4 h-4 mr-2" fill="currentColor" aria-hidden="true">
+                      <path d="M6 106.5v299l90 100.5h320l90-100.5v-299L416 6H96L6 106.5zM199.5 174h58.9c76.9 0 138.6 44.3 138.6 138s-58.4 138-142.9 138H199.5V174zm55.3 51.9v172.2h16.1c48.2 0 76.9-30.3 76.9-86s-32.5-86.2-76.9-86.2h-16.1z" />
+                    </svg>
+                    Devpost
+                  </a>
+                </Button>
+              )}
+              {project.youtube_url && (
+                <Button asChild variant="outline">
+                  <a href={project.youtube_url} target="_blank" rel="noopener noreferrer">
+                    <Youtube className="w-4 h-4 mr-2" />
+                    YouTube
                   </a>
                 </Button>
               )}
