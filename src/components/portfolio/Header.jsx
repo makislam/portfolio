@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { Moon, Sun, Github, Linkedin, Mail, FileText, Contact } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 // X (Twitter) icon component
 const XIcon = ({ className }) => (
@@ -52,6 +53,14 @@ export default function Header() {
         >
           <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
         </a>
+
+        <Link
+          to="/connect"
+          className="p-2 sm:p-3 rounded-full bg-ivory-light dark:bg-slate-800 shadow-lg border border-ivory-dark dark:border-slate-700 text-slate-800 dark:text-ivory-light hover:text-accent transition-colors"
+          aria-label="Connect"
+        >
+          <Contact className="w-4 h-4 sm:w-5 sm:h-5" />
+        </Link>
 
         <a
           href="https://github.com/makislam"
