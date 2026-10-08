@@ -81,7 +81,9 @@ export default function Hero() {
   useEffect(() => {
     fetch('https://api.counterapi.dev/v1/mlam-portfolio/visits/up')
       .then(res => res.json())
-      .then(data => setVisitorCount(data.count))
+      .then(data => {
+        if (typeof data?.count === 'number') setVisitorCount(data.count);
+      })
       .catch(() => {});
   }, []);
 
@@ -379,7 +381,7 @@ export default function Hero() {
                   </div>
 
                   {/* Private visitor counter */}
-                  {visitorCount !== null && (
+                  {typeof visitorCount === 'number' && (
                     <div className="pt-4 border-t border-ivory-dark dark:border-slate-700">
                       <p className="text-[10px] text-cloud dark:text-cloud-light text-right opacity-50 select-none">
                         {visitorCount.toLocaleString()} visits
