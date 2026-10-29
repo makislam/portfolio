@@ -32,6 +32,20 @@ export default {
           muted: '#D4A27F',
           light: '#EBDBBC',
         },
+        // Research page (/research/remote-proprioception)
+        paper: '#f6f5f1',
+        card: '#ffffff',
+        ink: {
+          DEFAULT: '#16161a',
+          2: '#4b4b55',
+          3: '#8a8a94',
+        },
+        line: '#e4e2dc',
+        truth: '#2a6fdb',
+        pred: '#e8650a',
+      },
+      spacing: {
+        4.5: '1.125rem',
       },
     },
   },

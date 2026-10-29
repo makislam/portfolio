@@ -1,0 +1,147 @@
+{
+ "bodies": {
+  "wrist_asm": {
+   "parent": null,
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "quat": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "joint": null
+  },
+  "middle_proximal": {
+   "parent": "wrist_asm",
+   "pos": [
+    -4.056e-9,
+    0.0165103,
+    0.0337916
+   ],
+   "quat": [
+    0.454517,
+    -0.541675,
+    -0.454521,
+    0.541675
+   ],
+   "joint": {
+    "name": "J1",
+    "range": [
+     -1.74533,
+     1.5708
+    ]
+   }
+  },
+  "middle_distal": {
+   "parent": "middle_proximal",
+   "pos": [
+    0,
+    -0.03,
+    0
+   ],
+   "quat": [
+    0.00000132679,
+    0,
+    0,
+    1
+   ],
+   "joint": {
+    "name": "J2",
+    "range": [
+     -1.91986,
+     0.174533
+    ]
+   }
+  }
+ },
+ "groups": [
+  {
+   "body": "wrist_asm",
+   "material": "housing",
+   "positions": [
+    0,
+    65844
+   ],
+   "indices": [
+    263376,
+    134448
+   ]
+  },
+  {
+   "body": "wrist_asm",
+   "material": "finger",
+   "positions": [
+    801168,
+    294
+   ],
+   "indices": [
+    802344,
+    588
+   ]
+  },
+  {
+   "body": "wrist_asm",
+   "material": "metal",
+   "positions": [
+    804696,
+    27762
+   ],
+   "indices": [
+    915744,
+    54564
+   ]
+  },
+  {
+   "body": "wrist_asm",
+   "material": "accent",
+   "positions": [
+    1134000,
+    13896
+   ],
+   "indices": [
+    1189584,
+    28224
+   ]
+  },
+  {
+   "body": "wrist_asm",
+   "material": "loadcell",
+   "positions": [
+    1302480,
+    2157
+   ],
+   "indices": [
+    1311108,
+    4362
+   ]
+  },
+  {
+   "body": "middle_proximal",
+   "material": "finger",
+   "positions": [
+    1328556,
+    6033
+   ],
+   "indices": [
+    1352688,
+    12090
+   ]
+  },
+  {
+   "body": "middle_distal",
+   "material": "finger",
+   "positions": [
+    1401048,
+    3903
+   ],
+   "indices": [
+    1416660,
+    7806
+   ]
+  }
+ ]
+}

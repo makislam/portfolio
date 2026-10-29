@@ -1,0 +1,55 @@
+/* Page-level styles for /research/remote-proprioception. Theme colors (paper, ink, line, truth,
+   pred, ...) are registered in tailwind.config.js; this file holds what Tailwind does not. */
+
+.rp-root {
+  --color-paper: #f6f5f1;
+  --color-ink: #16161a;
+  --color-pred: #e8650a;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.rp-root .font-mono {
+  font-family: var(--font-mono);
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-pred);
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.flow {
+  stroke-dasharray: 4 8;
+  animation: flow 0.8s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow,
+  .pulse-dot {
+    animation: none;
+  }
+}

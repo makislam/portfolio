@@ -213,7 +213,7 @@ export default function ExperienceSection() {
                     <Calendar className="w-3.5 h-3.5" />
                     Sept. 2022 - Apr. 2027
                   </span>
-                  <span className="font-semibold text-white">3.8/4.0 GPA</span>
+                  <span className="font-semibold text-white">3.81/4.0 GPA</span>
                 </div>
               </div>
             </div>

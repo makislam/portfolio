@@ -1,0 +1,119 @@
+[
+ {
+  "id": "Take_04",
+  "model": "T",
+  "regime": "no-contact",
+  "movement": "hinge_hold_100",
+  "hz": 30,
+  "duration": 96.44,
+  "mae": {
+   "j1": 2.11,
+   "j2": 4.52,
+   "force": null
+  }
+ },
+ {
+  "id": "Take_07",
+  "model": "T",
+  "regime": "no-contact",
+  "movement": "flex_hinge_async_100",
+  "hz": 30,
+  "duration": 97.44,
+  "mae": {
+   "j1": 1.89,
+   "j2": 1.63,
+   "force": null
+  }
+ },
+ {
+  "id": "Take_28",
+  "model": "T",
+  "regime": "no-contact",
+  "movement": "random_poses",
+  "hz": 30,
+  "duration": 94.4,
+  "mae": {
+   "j1": 1.28,
+   "j2": 2.04,
+   "force": null
+  }
+ },
+ {
+  "id": "take_202",
+  "model": "Q",
+  "regime": "standard contact",
+  "movement": "flex_hold_100",
+  "hz": 30,
+  "duration": 101.44,
+  "mae": {
+   "j1": 2.42,
+   "j2": 1.62,
+   "force": 0.204
+  }
+ },
+ {
+  "id": "take_209",
+  "model": "Q",
+  "regime": "standard contact",
+  "movement": "flex_hinge_async_100",
+  "hz": 30,
+  "duration": 96.14,
+  "mae": {
+   "j1": 6.96,
+   "j2": 5.27,
+   "force": 0.546
+  }
+ },
+ {
+  "id": "take_220",
+  "model": "Q",
+  "regime": "standard contact",
+  "movement": "random_poses",
+  "hz": 30,
+  "duration": 100.8,
+  "mae": {
+   "j1": 5.88,
+   "j2": 2.51,
+   "force": 0.267
+  }
+ },
+ {
+  "id": "Take_102",
+  "model": "Q",
+  "regime": "extreme contact",
+  "movement": "flex_hold_100",
+  "hz": 30,
+  "duration": 96.08,
+  "mae": {
+   "j1": 45.79,
+   "j2": 8.41,
+   "force": 1.418
+  }
+ },
+ {
+  "id": "Take_108",
+  "model": "Q",
+  "regime": "extreme contact",
+  "movement": "flex_hinge_async_100",
+  "hz": 30,
+  "duration": 96.24,
+  "mae": {
+   "j1": 9.58,
+   "j2": 7.95,
+   "force": 0.836
+  }
+ },
+ {
+  "id": "Take_119",
+  "model": "Q",
+  "regime": "extreme contact",
+  "movement": "random_poses",
+  "hz": 30,
+  "duration": 102.4,
+  "mae": {
+   "j1": 13.77,
+   "j2": 5.95,
+   "force": 0.474
+  }
+ }
+]

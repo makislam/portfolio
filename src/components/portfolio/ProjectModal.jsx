@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Github, ChevronLeft, ChevronRight, Play, Maximize2, Youtube } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { categoriesOf } from '@/lib/utils';
 
 export default function ProjectModal({ project, onClose }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -157,9 +158,13 @@ export default function ProjectModal({ project, onClose }) {
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-slate-900 dark:text-ivory-light mb-2">
                   {project.title}
                 </h2>
-                <Badge variant="outline" className="text-xs sm:text-sm capitalize dark:border-slate-600 dark:text-cloud-light">
-                  {project.category}
-                </Badge>
+                <div className="flex flex-wrap gap-2">
+                  {categoriesOf(project).map((cat) => (
+                    <Badge key={cat} variant="outline" className="text-xs sm:text-sm capitalize dark:border-slate-600 dark:text-cloud-light">
+                      {cat}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
 

@@ -77,7 +77,7 @@ const sampleProjects = [
     title: '"That Thang" - Pick and Place Robot',
     description: 'Cost-effective autonomous pick and place system with custom electronics and state-machine firmware.',
     long_description: 'Designed a cost-effective system under $300 to autonomously move Benchies from the pickup area to the drop-off area while maximizing throughput with a target of >30 Benchies and minimizing the number of prime movers. Designed and integrated the complete electronic control subsystem using nMOS switching, employing gate and pull-down resistors for reliable state control and flyback diodes for inductive spike protection. Developed firmware implementing state-machine logic where limit switches serve as the primary triggers for electromagnet actuation, integrating important safety overrides for E-stop and start/stop inputs.',
-    category: 'robotics',
+    category: ['robotics', 'mechanical'],
     image_url: '/projects/380-1.png',
     images: [
       '/projects/380-1.png',
@@ -99,7 +99,7 @@ const sampleProjects = [
     title: '40:1 Strain Wave Gear Design',
     description: 'High-reduction ratio strain wave gear design optimized for 3D printing.',
     long_description: 'Designed a strain wave gear mechanism achieving high reduction ratios for robotics applications. Analayzed the system to reduce friction and increase efficiency of the gearbox.',
-    category: 'robotics',
+    category: ['mechanical', 'robotics'],
     image_url: '/projects/strainwavegear-1.png',
     images: [
       '/projects/strainwavegear-1.png',
@@ -161,7 +161,7 @@ const sampleProjects = [
     title: 'Experimental Flow Visualization of a Drone Airfoil',
     description: 'Makeshift wind tunnel testing and flow visualization study of airfoil aerodynamics at various angles of attack.',
     long_description: 'Conducted experimental aerodynamic analysis of a drone airfoil using wind tunnel testing and elementary flow visualization techniques. Performed smoke flow visualization to observe boundary layer behavior, flow separation, and vortex formation at different angles of attack and Reynolds numbers. The study provided insights into airfoil performance characteristics and stall behavior, informing design decisions for optimal flight performance.',
-    category: 'research',
+    category: ['research', 'mechanical'],
     image_url: '/projects/flowviz-1.png',
     images: [
       '/projects/flowviz-1.png',
@@ -239,7 +239,7 @@ const sampleProjects = [
     title: 'Humanoid Locomotion Policy',
     description: 'Developed a natural humanoid walking policy using DeepMimic-style reinforcement learning using Google Brax.',
     long_description: 'Developed a natural humanoid walking policy using DeepMimic-style reinforcement learning within the Brax/JAX physics engine. Overcame kinematic discrepancies in CMU Motion Capture data by remapping inverted coordinate systems and engineering biomechanical constraints to eliminate gait artifacts like "cowboy stance" and leg crossing. Optimized agent stability by implementing a custom gyroscope-based upright reward and "death-by-tilt" termination logic, achieving a robust, naturally oscillating gait over 30 million PPO training steps. Validated the policy\’s performance through kinematic analysis of phase-based foot contacts and center-of-mass tracking.',
-    category: 'robotics',
+    category: ['robotics', 'software'],
     image_url: '/projects/LocomotionRL-1.png',
     images: [
       '/projects/LocomotionRL-1.png',
@@ -279,7 +279,7 @@ const sampleProjects = [
     title: 'BetterThanU Rubik\'s Cube Solver',
     description: 'LEGO EV3 cube-solving robot paired with a C++ analysis tool that generates RobotC solve instructions.',
     long_description: 'Built a LEGO EV3-based cube solver with a companion analysis program that translates scramble notation into solution moves for the robot. The workflow outputs a moves.txt file that can be loaded into RobotC, creating a simple pipeline from cube input to automated solve instructions.',
-    category: 'robotics',
+    category: ['robotics', 'software'],
     image_url: '/projects/cube-1.png',
     images: [
       '/projects/cube-1.png',
@@ -302,7 +302,7 @@ const sampleProjects = [
     title: 'BetterThanU2',
     description: 'ROS2-based Rubik\’s Cube robot using RealSense vision, Dynamixel actuators, and Kociemba algorithmic solves.',
     long_description: 'Designed, assembled, and benchmarked a ROS2-integrated Rubik\'s Cube solving robot using Dynamixel motors and RealSense D405 cameras. Streamlined end-to-end execution through a unified launch stack that processes cube states via the Kociemba solver and executes motion plans seamlessly. Built the foundational labeled dataset to transition state detection to a real-time ML model.',
-    category: 'robotics',
+    category: ['robotics', 'software'],
     image_url: '/projects/betterthanuv2-1.jpg',
     images: [
       '/projects/betterthanuv2-1.jpg',
@@ -322,7 +322,7 @@ const sampleProjects = [
     title: 'PrintDnD',
     description: 'An autonomous 3D printer technician which resets the printer so you don\'t have toString.',
     long_description: 'Fine tuned the PI0 Vision Language Action (VLA) Model with 100+ takes of teleoperated data and deployed onto the BracketBot to interact with a Bambu Lab X1 Carbon 3D printer. Teleoperation data was collected with the Meta Quest 3S and model trained on NVIDIA H100 GPU with inference running on the same GPU. The project won 2nd place at Hack the North, Canada\'s largest hackathon.',
-    category: 'robotics',
+    category: ['robotics', 'software'],
     image_url: '/projects/Printdnd.png',
     images: [
       '/projects/Printdnd_Video.mp4',
@@ -336,6 +336,19 @@ const sampleProjects = [
     featured: true,
     year: '2026',
     created_date: '2026-09-20',
+  },
+  {
+    id: '17',
+    title: 'Learned Remote Proprioception',
+    description: 'Research paper on estimating joint angles and contact force for a sensorless soft finger from motor and load-cell signals. Under review at ICRA 2027.',
+    category: ['research', 'robotics'],
+    image_url: '/research/remote-proprioception/images/raspberry.jpg',
+    // Opens the in-site research page instead of the project modal.
+    route: '/research/remote-proprioception',
+    technologies: ['Soft Robotics', 'Tendon-Driven', 'GRU', 'Force Estimation', 'Research'],
+    featured: true,
+    year: '2026',
+    created_date: '2026-10-29',
   },
 ];
 
