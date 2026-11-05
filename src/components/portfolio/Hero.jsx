@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowDown, X, ChevronDown, Camera } from 'lucide-react';
-import PhotoGallery from './PhotoGallery';
+import { motion } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const titles = ['Mechanical Engineer', 'Roboticist', 'Tinkerer', 'Pilot'];
+const titles = ['Mechanical Engineer', 'Roboticist', 'Researcher', 'Tinkerer', 'Pilot'];
 
 function useTypewriter(words, typingSpeed = 100, deletingSpeed = 50, pauseDuration = 2000) {
   const [displayText, setDisplayText] = useState('');
@@ -39,21 +39,6 @@ function useTypewriter(words, typingSpeed = 100, deletingSpeed = 50, pauseDurati
   return displayText;
 }
 
-const skillCategories = [
-  {
-    title: 'CAD & Analysis',
-    skills: ['SOLIDWORKS', 'CATIA V5/V6', 'OnShape', 'Inventor', 'AutoCAD', 'Ansys', 'Abaqus', '3DX', 'ENOVIA'],
-  },
-  {
-    title: 'Manufacturing',
-    skills: ['3D Printing', 'Sheet Metal', 'CNC Machining', 'GD&T', 'Tolerance Stackup', 'Validation & Reliability'],
-  },
-  {
-    title: 'Design & Software',
-    skills: ['Python', 'C++', 'MATLAB', 'Simulink', 'Arduino', 'DFMA', 'DFMEA', 'Verification & Validation'],
-  },
-];
-
 const heroImages = [
   { src: '/hero/me-1.jpg', webpSrc: '/hero/me-1.webp', alt: 'Makis Lam', rotation: -15, stackX: -20, stackY: 0 },
   { src: '/hero/me-3.png', webpSrc: '/hero/me-3.webp', alt: 'Makis Lam', rotation: 5, stackX: 10, stackY: 8 },
@@ -61,12 +46,9 @@ const heroImages = [
 ];
 
 export default function Hero() {
-  const [showAbout, setShowAbout] = useState(false);
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
-  const [showSkills, setShowSkills] = useState(false);
-  const [showGallery, setShowGallery] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [visitorCount, setVisitorCount] = useState(null);
   const typedTitle = useTypewriter(titles, 100, 50, 2000);
 
   // Check if mobile on mount and resize
@@ -77,22 +59,10 @@ export default function Hero() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Track visitor count on mount
+  // Count a visit on mount (shown on the About page)
   useEffect(() => {
-    fetch('https://api.counterapi.dev/v1/mlam-portfolio/visits/up')
-      .then(res => res.json())
-      .then(data => {
-        if (typeof data?.count === 'number') setVisitorCount(data.count);
-      })
-      .catch(() => {});
+    fetch('https://api.counterapi.dev/v1/mlam-portfolio/visits/up').catch(() => {});
   }, []);
-
-  // Reset skills collapse state when modal closes
-  useEffect(() => {
-    if (!showAbout) {
-      setShowSkills(false);
-    }
-  }, [showAbout]);
 
   const scrollToExperience = () => {
     document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
@@ -126,7 +96,7 @@ export default function Hero() {
           className="mt-12 flex justify-center"
         >
           <button
-            onClick={() => setShowAbout(true)}
+            onClick={() => navigate('/about')}
             onMouseEnter={() => !isMobile && setIsHovered(true)}
             onMouseLeave={() => !isMobile && setIsHovered(false)}
             className="relative h-64 md:h-72 w-full max-w-4xl cursor-pointer group"
@@ -245,158 +215,6 @@ export default function Hero() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-accent-light dark:bg-accent/10 rounded-full blur-3xl opacity-30" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-muted/30 dark:bg-accent-muted/10 rounded-full blur-3xl opacity-30" />
 
-      {/* About Modal */}
-      <AnimatePresence>
-        {showAbout && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowAbout(false)}
-            className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 md:p-6"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-ivory-light dark:bg-slate-800 rounded-2xl md:rounded-3xl w-full max-w-3xl max-h-[80vh] md:max-h-[90vh] overflow-hidden shadow-2xl flex flex-col"
-            >
-              {/* Header with profile picture */}
-              <div className="relative bg-gradient-to-r from-accent to-accent-muted p-3 md:p-8 text-white flex-shrink-0">
-                <button
-                  onClick={() => setShowAbout(false)}
-                  className="absolute top-2 right-2 md:top-4 md:right-4 p-1.5 md:p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                >
-                  <X className="w-4 h-4 md:w-5 md:h-5" />
-                </button>
-                <div className="flex items-center gap-3 md:gap-6">
-                  <div className="w-12 h-12 md:w-24 md:h-24 rounded-full overflow-hidden border-2 md:border-4 border-white/30 flex-shrink-0">
-                    <picture>
-                      <source srcSet="/hero/me-4.webp" type="image/webp" />
-                      <img
-                        src="/hero/me-4.jpg"
-                        alt="Makis Lam"
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover"
-                      />
-                    </picture>
-                  </div>
-                  <div>
-                    <h2 className="text-lg md:text-3xl font-medium mb-0.5 md:mb-1">Makis Lam</h2>
-                    <p className="text-ivory/90 text-xs md:text-base">Mechanical Engineering @ UWaterloo</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-3 md:p-8 overflow-y-auto flex-1 min-h-0">
-                <div className="space-y-4 md:space-y-6">
-                  <div>
-                    <h3 className="text-xs md:text-sm uppercase tracking-[0.2em] text-accent mb-2 md:mb-3">About</h3>
-                    <div className="text-cloud-dark dark:text-cloud-light leading-relaxed text-sm md:text-base">
-                      <p>
-                        I'm a Mechanical Engineering student at the University of Waterloo. I like to work on cool things.
-                        I also am a devout Christian, pilot, former Air Cadet, Varsity Frisbee Athlete, photographer and F1 enthusiast. Check out some of my work!
-                      </p>
-                    </div>
-                    {/* Photo Gallery Button */}
-                    <button
-                      onClick={() => setShowGallery(true)}
-                      className="mt-3 md:mt-4 flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-accent hover:bg-accent/90 text-white rounded-full text-xs md:text-sm font-medium transition-colors"
-                    >
-                      <Camera className="w-3.5 h-3.5 md:w-4 md:h-4" />
-                      <span>View Photo Gallery</span>
-                    </button>
-                  </div>
-
-                  {/* Skills - Collapsible on mobile */}
-                  <div className="md:hidden">
-                    <button
-                      onClick={() => setShowSkills(!showSkills)}
-                      className="flex items-center justify-between w-full py-2 text-xs uppercase tracking-[0.2em] text-accent"
-                    >
-                      <span>Skills & Stack</span>
-                      <motion.div
-                        animate={{ rotate: showSkills ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ChevronDown className="w-4 h-4" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence>
-                      {showSkills && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="space-y-4 pt-2">
-                            {skillCategories.map((category) => (
-                              <div key={category.title}>
-                                <h3 className="text-xs uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-2">
-                                  {category.title}
-                                </h3>
-                                <div className="flex flex-wrap gap-1.5">
-                                  {category.skills.map((skill) => (
-                                    <span
-                                      key={skill}
-                                      className="px-2.5 py-1 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-xs font-medium border border-ivory-dark dark:border-slate-600"
-                                    >
-                                      {skill}
-                                    </span>
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Skills - Always visible on desktop */}
-                  <div className="hidden md:block space-y-6">
-                    {skillCategories.map((category) => (
-                      <div key={category.title}>
-                        <h3 className="text-sm uppercase tracking-[0.2em] text-cloud dark:text-cloud mb-3">
-                          {category.title}
-                        </h3>
-                        <div className="flex flex-wrap gap-2">
-                          {category.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="px-4 py-2 bg-ivory dark:bg-slate-700 rounded-full text-slate-800 dark:text-ivory-light text-sm font-medium border border-ivory-dark dark:border-slate-600"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Private visitor counter */}
-                  {typeof visitorCount === 'number' && (
-                    <div className="pt-4 border-t border-ivory-dark dark:border-slate-700">
-                      <p className="text-[10px] text-cloud dark:text-cloud-light text-right opacity-50 select-none">
-                        {visitorCount.toLocaleString()} visits
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Photo Gallery */}
-      <PhotoGallery isOpen={showGallery} onClose={() => setShowGallery(false)} />
     </section>
   );
 }

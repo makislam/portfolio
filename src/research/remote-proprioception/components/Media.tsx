@@ -119,6 +119,30 @@ export function Clip({ src, poster, className = "", controls = false, start = 0,
     return () => io.disconnect();
   }, [controls]);
 
+  // Looping clips: keep playback inside [start, end].
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || controls || !ranged) return;
+    const onMeta = () => {
+      if (v.currentTime < start) v.currentTime = start;
+    };
+    const onTime = () => {
+      if ((end !== undefined && v.currentTime >= end) || v.ended) {
+        v.currentTime = start;
+        v.play().catch(() => {});
+      }
+    };
+    if (v.readyState >= 1) onMeta();
+    v.addEventListener("loadedmetadata", onMeta);
+    v.addEventListener("timeupdate", onTime);
+    v.addEventListener("ended", onTime);
+    return () => {
+      v.removeEventListener("loadedmetadata", onMeta);
+      v.removeEventListener("timeupdate", onTime);
+      v.removeEventListener("ended", onTime);
+    };
+  }, [controls, ranged, start, end]);
+
   if (controls && ranged) return <RangedPlayer src={src} className={className} start={start} end={end} />;
 
   return (
@@ -128,7 +152,7 @@ export function Clip({ src, poster, className = "", controls = false, start = 0,
       poster={poster ? asset(poster) : undefined}
       className={className}
       muted={!controls}
-      loop={!controls}
+      loop={!controls && !ranged}
       playsInline
       controls={controls}
       preload="metadata"

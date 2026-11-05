@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -57,7 +57,8 @@ function getThumbSrc(src) {
   return `${dir}thumb-${name}.webp`;
 }
 
-export default function PhotoGallery({ isOpen, onClose }) {
+// Masonry grid of photos with a full-screen lightbox. Rendered inline on the About page.
+export default function PhotoGallery() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [direction, setDirection] = useState(0);
 
@@ -88,52 +89,31 @@ export default function PhotoGallery({ isOpen, onClose }) {
     setSelectedIndex((prev) => (prev === galleryPhotos.length - 1 ? 0 : prev + 1));
   };
 
-  const handleKeyDown = (e) => {
-    if (selectedIndex !== null) {
+  // Arrow keys / Escape drive the lightbox while it is open.
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const onKey = (e) => {
       if (e.key === 'ArrowLeft') goToPrevious(e);
       if (e.key === 'ArrowRight') goToNext(e);
       if (e.key === 'Escape') setSelectedIndex(null);
-    } else if (e.key === 'Escape') {
-      onClose();
-    }
-  };
-
-  if (!isOpen) return null;
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selectedIndex]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-ivory-light dark:bg-slate-900 z-[60] overflow-hidden"
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-    >
-      {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-ivory-light/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-ivory-dark/20 dark:border-slate-700/50">
-        <div className="flex items-center justify-between px-4 md:px-6 py-4">
-          <div>
-            <h2 className="text-lg md:text-xl font-medium text-slate-900 dark:text-ivory-light">Gallery</h2>
-            <p className="text-xs text-cloud-dark dark:text-cloud-light">A collection of moments</p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-full hover:bg-ivory-dark/50 dark:hover:bg-slate-700/50 transition-colors"
-          >
-            <X className="w-5 h-5 text-slate-900 dark:text-ivory-light" />
-          </button>
-        </div>
-      </div>
+    <div>
 
       {/* VSCO-style Grid */}
-      <div className="h-full overflow-y-auto pt-20 pb-8 px-1 md:px-4">
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-1 md:gap-2 max-w-7xl mx-auto">
+      <div>
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-1 md:gap-2">
           {galleryPhotos.map((photo, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (index % 4) * 0.05, duration: 0.4 }}
               className="mb-1 md:mb-2 break-inside-avoid"
             >
               <button
@@ -226,6 +206,6 @@ export default function PhotoGallery({ isOpen, onClose }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }

@@ -25,7 +25,7 @@ const STEPS: Step[] = [
     body: (
       <div className="grid gap-3 sm:grid-cols-2">
         <figure>
-          <Clip src="/videos/hammer.mp4" poster="/videos/hammer.jpg" className="aspect-video w-full rounded-xl bg-black object-cover" />
+          <Clip src="/videos/hammer.mp4" end={15} poster="/videos/hammer.jpg" className="aspect-video w-full rounded-xl bg-black object-cover" />
           <figcaption className="mt-1.5 text-[11.5px] text-ink-3">A hammer strike on the fingers: no electronics to break.</figcaption>
         </figure>
         <figure>

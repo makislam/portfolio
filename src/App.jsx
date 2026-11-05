@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Connect from './pages/Connect';
+import About from './pages/About';
 import Header from './components/portfolio/Header';
 
 // Loaded on demand so three.js and the paper's assets stay out of the homepage bundle.
@@ -22,6 +23,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomeLayout />} />
         <Route path="/connect" element={<Connect />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/research/remote-proprioception"
           element={

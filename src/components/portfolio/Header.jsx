@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Github, Linkedin, Mail, FileText, Contact } from 'lucide-react';
+import { Moon, Sun, Github, Linkedin, Mail, FileText, Contact, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -36,6 +36,14 @@ export default function Header() {
         transition={{ duration: 0.5 }}
         className="flex items-center gap-1 sm:gap-2"
       >
+        <Link
+          to="/about"
+          className="p-2 sm:p-3 rounded-full bg-ivory-light dark:bg-slate-800 shadow-lg border border-ivory-dark dark:border-slate-700 text-slate-800 dark:text-ivory-light hover:text-accent transition-colors"
+          aria-label="Profile"
+        >
+          <User className="w-4 h-4 sm:w-5 sm:h-5" />
+        </Link>
+
         <a
           href="mailto:makis.lam@uwaterloo.ca"
           className="p-2 sm:p-3 rounded-full bg-ivory-light dark:bg-slate-800 shadow-lg border border-ivory-dark dark:border-slate-700 text-slate-800 dark:text-ivory-light hover:text-accent transition-colors"
