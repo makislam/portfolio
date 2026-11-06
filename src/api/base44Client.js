@@ -350,6 +350,24 @@ const sampleProjects = [
     year: '2026',
     created_date: '2026-10-29',
   },
+  {
+    id: '18',
+    title: 'Dexterous Chopstick Manipulation',
+    description: 'Training a Shadow Dexterous Hand to use chopsticks with imitation learning and reinforcement learning in simulation.',
+    long_description: 'Teaching a simulated Shadow Dexterous Hand to hold and operate a pair of chopsticks, one of the hardest fine-motor tasks for a robotic hand. Human demonstrations bootstrap a base policy through imitation learning, which is then refined with reinforcement learning to stabilize the grasp and control the relative motion of the two sticks. This project is in progress; current work focuses on a stable chopstick grip before moving on to picking up objects.',
+    category: ['robotics', 'software'],
+    image_url: '/projects/chopsticks-card.png',
+    images: [
+      '/projects/chopsticks-card.png',
+    ],
+    technologies: ['Imitation Learning', 'Reinforcement Learning', 'Shadow Hand', 'Dexterous Manipulation', 'Simulation', 'Python'],
+    github_url: '',
+    live_url: '',
+    in_progress: true,
+    featured: true,
+    year: '2026',
+    created_date: '2026-11-06',
+  },
 ];
 
 export const base44 = {

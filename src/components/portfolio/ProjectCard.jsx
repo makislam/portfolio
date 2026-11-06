@@ -107,6 +107,11 @@ export default function ProjectCard({ project, index, onSelect }) {
         </p>
 
         <div className="flex items-center gap-2 flex-wrap pt-1">
+          {project.in_progress && (
+            <Badge variant="outline" className="text-xs font-normal bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-500/30">
+              In Progress
+            </Badge>
+          )}
           {categoriesOf(project).map((cat) => (
             <Badge key={cat} variant="outline" className={`${categoryStyles[cat] || categoryStyles.other} text-xs font-normal capitalize`}>
               {cat}
