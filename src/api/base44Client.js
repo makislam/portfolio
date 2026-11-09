@@ -368,6 +368,24 @@ const sampleProjects = [
     year: '2026',
     created_date: '2026-11-06',
   },
+  {
+    id: '19',
+    title: 'David AI',
+    description: 'Capstone project: a self-playing piano for music education that demonstrates pieces and gives instant feedback on your playing.',
+    long_description: 'David AI is my capstone project: a self-playing piano built to make learning piano more interactive. In demonstration mode, the piano plays a piece itself so the student can see and hear exactly how it should be performed. In practice mode, the student plays and the system gives instant feedback on their playing, closing the loop between hearing a piece and mastering it. The prototype is being built into a Heintzman & Co. upright piano. This project is in progress.',
+    category: ['robotics', 'mechanical'],
+    image_url: '/projects/davidai-1.jpg',
+    images: [
+      '/projects/davidai-1.jpg',
+    ],
+    technologies: ['Mechatronics', 'Embedded Systems', 'Actuation', 'Real-Time Feedback', 'Music Education'],
+    github_url: '',
+    live_url: '',
+    in_progress: true,
+    featured: true,
+    year: '2026',
+    created_date: '2026-11-09',
+  },
 ];
 
 export const base44 = {
